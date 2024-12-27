@@ -1,5 +1,6 @@
 const form = document.querySelector('form')
-let open = false
+let isModalOpen = false
+
 const createModal = (name, email) => {
   const modal = document.createElement('div')
   modal.classList.add('modal')
@@ -14,17 +15,18 @@ const createModal = (name, email) => {
   const closeButton = modal.querySelector('.close')
   closeButton.addEventListener('click', () => {
     modal.remove()
-    open = false
+    isModalOpen = false
     location.reload()
   })
 }
+
 form.addEventListener('submit', (e) => {
   e.preventDefault()
   const name = e.target[0].value
   const email = e.target[1].value
 
-  open = true
-  if (open) {
+  isModalOpen = true
+  if (isModalOpen) {
     form.style.display = 'none'
     createModal(name, email)
   }
